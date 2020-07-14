@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.AccessControl;
 
 namespace ThreeDimensionalArray
 {
@@ -88,13 +89,13 @@ namespace ThreeDimensionalArray
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Vector))
+            if((obj as Vector) == null || !(obj is Vector))
             {
                 return false;
             }
 
             Vector vector = obj as Vector;
-            return X == vector?.X && Y == vector?.Y && Z == vector?.Z;
+            return X == vector.X && Y == vector.Y && Z == vector.Z;
         }
 
         public override int GetHashCode()
