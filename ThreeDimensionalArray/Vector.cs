@@ -36,19 +36,12 @@ namespace ThreeDimensionalArray
 
         public static Vector operator /(Vector vectorA, Vector vectorB)
         {
-            try
+            if (IsZero(vectorB.X, vectorB.Y, vectorB.Z))
             {
-                if (IsZero(vectorB.X, vectorB.Y, vectorB.Z))
-                {
-                    throw new DivideByZeroException();
-                }
+                throw new DivideByZeroException("Can't divide by zero");
+            }
 
-                return new Vector(Math.Round(vectorA.X / vectorB.X, 2), Math.Round(vectorA.Y / vectorB.Y, 2), Math.Round(vectorA.Z / vectorB.Z, 2));
-            }
-            catch (DivideByZeroException exc)
-            {
-                throw new DivideByZeroException("Can't divide by zero", exc);
-            }
+            return new Vector(Math.Round(vectorA.X / vectorB.X, 2), Math.Round(vectorA.Y / vectorB.Y, 2), Math.Round(vectorA.Z / vectorB.Z, 2));
         }
 
         public static Vector operator +(Vector vectorA, double value) => new Vector(vectorA.X + value, vectorA.Y + value, vectorA.Z + value);
@@ -59,19 +52,12 @@ namespace ThreeDimensionalArray
 
         public static Vector operator /(Vector vectorA, double value)
         {
-            try
+            if (IsZero(value))
             {
-                if (IsZero(value))
-                {
-                    throw new DivideByZeroException();
-                }
+                throw new DivideByZeroException("Can't divide by zero");
+            }
 
-                return new Vector(Math.Round(vectorA.X / value, 2), Math.Round(vectorA.Y / value, 2), Math.Round(vectorA.Z / value, 2));
-            }
-            catch (DivideByZeroException exc)
-            {
-                throw new DivideByZeroException("Can't divide by zero", exc);
-            }
+            return new Vector(Math.Round(vectorA.X / value, 2), Math.Round(vectorA.Y / value, 2), Math.Round(vectorA.Z / value, 2));
         }
 
         public static Vector operator %(Vector vectorA, double value) => new Vector(vectorA.X % value, vectorA.Y % value, vectorA.Z % value);
@@ -86,11 +72,28 @@ namespace ThreeDimensionalArray
 
         public static Vector operator %(double value, Vector vectorA) => vectorA % value;
 
-        public static bool operator ==(Vector vectorA, Vector vectorB) => ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length;
+        public static bool operator ==(Vector vectorA, Vector vectorB)
+        {
+            if (ReferenceEquals(vectorA, null) || ReferenceEquals(vectorB, null))
+            {
+                return ReferenceEquals(vectorA, null) && ReferenceEquals(vectorB, null);
+            }
+
+            return ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length;
+        }
 
         public static bool operator !=(Vector vectorA, Vector vectorB) => !(vectorA == vectorB);
 
-        public override bool Equals(object obj) => obj is Vector;
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vector))
+            {
+                return false;
+            }
+
+            Vector vector = obj as Vector;
+            return X == vector?.X && Y == vector?.Y && Z == vector?.Z;
+        }
 
         public override int GetHashCode()
         {
@@ -101,6 +104,8 @@ namespace ThreeDimensionalArray
             hashCode = hashCode * -1521134295 + Length.GetHashCode();
             return hashCode;
         }
+
+        public override string ToString() => $"Vertex coordinates ({X}; {Y}; {Z})";
 
         private static bool IsZero(params double[] numbers) => numbers.Any(n => n == 0d);
     }
