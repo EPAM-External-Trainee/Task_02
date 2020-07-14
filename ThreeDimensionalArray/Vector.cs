@@ -10,11 +10,20 @@ namespace ThreeDimensionalArray
 
         public double Z { get; private set; }
 
+        public Vector() { }
+
         public Vector(double x, double y, double z)
         {
             X = x;
             Y = y;
             Z = z;
+        }
+
+        public Vector(double[,,] threeDimensionalArray)
+        {
+            X = threeDimensionalArray.GetLength(0);
+            Y = threeDimensionalArray.GetLength(1);
+            Z = threeDimensionalArray.GetLength(2);
         }
 
         public double Length => Math.Round(Math.Sqrt(X * X) + (Y * Y) + (Z * Z), 2);
@@ -37,6 +46,11 @@ namespace ThreeDimensionalArray
         {
             try
             {
+                if (IsZero(vectorB.X, vectorB.Y, vectorB.Z))
+                {
+                    throw new DivideByZeroException();
+                }
+
                 return new Vector(Math.Round(vectorA.X / vectorB.X, 2), Math.Round(vectorA.Y / vectorB.Y, 2), Math.Round(vectorA.Z / vectorB.Z, 2));
             }
             catch (DivideByZeroException exc)
@@ -55,7 +69,12 @@ namespace ThreeDimensionalArray
         {
             try
             {
-                return new Vector(vectorA.X / value, vectorA.Y / value, vectorA.Z / value);
+                if (IsZero(value))
+                {
+                    throw new DivideByZeroException();
+                }
+
+                return new Vector(Math.Round(vectorA.X / value, 2), Math.Round(vectorA.Y / value, 2), Math.Round(vectorA.Z / value, 2));
             }
             catch (DivideByZeroException exc)
             {
@@ -90,5 +109,7 @@ namespace ThreeDimensionalArray
             hashCode = hashCode * -1521134295 + Length.GetHashCode();
             return hashCode;
         }
+
+        private static bool IsZero(params double[] numbers) => numbers.Any(n => n == 0d);
     }
 }
