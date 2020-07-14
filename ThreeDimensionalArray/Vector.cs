@@ -11,20 +11,11 @@ namespace ThreeDimensionalArray
 
         public double Z { get; private set; }
 
-        public Vector() { }
-
         public Vector(double x, double y, double z)
         {
             X = x;
             Y = y;
             Z = z;
-        }
-
-        public Vector(double[,,] threeDimensionalArray)
-        {
-            X = threeDimensionalArray.GetLength(0);
-            Y = threeDimensionalArray.GetLength(1);
-            Z = threeDimensionalArray.GetLength(2);
         }
 
         public double Length => Math.Round(Math.Sqrt(X * X) + (Y * Y) + (Z * Z), 2);
