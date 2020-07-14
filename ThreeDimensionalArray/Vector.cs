@@ -5,11 +5,13 @@ namespace ThreeDimensionalArray
 {
     public class Vector
     {
-        public double X { get; private set; }
+        public double X { get; private set; } = 0;
 
-        public double Y { get; private set; }
+        public double Y { get; private set; } = 0;
 
-        public double Z { get; private set; }
+        public double Z { get; private set; } = 0;
+
+        public Vector() { }
 
         public Vector(double x, double y, double z)
         {
@@ -32,7 +34,7 @@ namespace ThreeDimensionalArray
 
         public static Vector operator -(Vector vectorA, Vector vectorB) => new Vector(vectorA.X - vectorB.X, vectorA.Y - vectorB.Y, vectorA.Z - vectorB.Z);
 
-        public static Vector operator *(Vector vectorA, Vector vectorB) => new Vector(vectorA.X * vectorB.X, vectorA.Y * vectorB.Y, vectorA.Z * vectorB.Z);
+        public static Vector operator *(Vector vectorA, Vector vectorB) => new Vector((vectorA.Y * vectorB.Z) - (vectorA.Z * vectorB.Y), (vectorA.Z * vectorB.X) - (vectorA.X * vectorB.Z), (vectorA.X * vectorB.Y) - (vectorA.Y * vectorB.X));
 
         public static Vector operator /(Vector vectorA, Vector vectorB)
         {
