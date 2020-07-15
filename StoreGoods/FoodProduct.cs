@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace StoreGoods
 {
@@ -19,13 +18,6 @@ namespace StoreGoods
 
         public override bool Equals(object obj) => obj is FoodProduct product && Name == product.Name && Type == product.Type && Price == product.Price;
 
-        public override int GetHashCode()
-        {
-            int hashCode = 1368981669;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
-            hashCode = hashCode * -1521134295 + Price.GetHashCode();
-            return hashCode;
-        }
+        public override int GetHashCode() => Name.GetHashCode() + Type.GetHashCode() + Price.GetHashCode();
     }
 }
