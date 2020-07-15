@@ -97,15 +97,7 @@ namespace ThreeDimensionalArray
             return X == vector.X && Y == vector.Y && Z == vector.Z;
         }
 
-        public override int GetHashCode()
-        {
-            int hashCode = 612420109;
-            hashCode = hashCode * -1521134295 + X.GetHashCode();
-            hashCode = hashCode * -1521134295 + Y.GetHashCode();
-            hashCode = hashCode * -1521134295 + Z.GetHashCode();
-            hashCode = hashCode * -1521134295 + Length.GetHashCode();
-            return hashCode;
-        }
+        public override int GetHashCode() => X.GetHashCode() + Y.GetHashCode() + Z.GetHashCode() + Length.GetHashCode();
 
         public override string ToString() => $"Vertex coordinates ({X}; {Y}; {Z})";
 

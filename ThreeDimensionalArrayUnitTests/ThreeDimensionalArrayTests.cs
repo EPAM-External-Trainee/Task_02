@@ -24,32 +24,33 @@ namespace ThreeDimensionalArrayUnitTests
 
         // Здесь будут тесты унарных операций
 
+        [DataTestMethod, Description("Testing an overloaded unary operator +. Positive test result.")]
+        [DynamicData(nameof(GetVectorsForUnaryOperatorPlusTest), DynamicDataSourceType.Method)]
+        public void OverloadedUnaryOperatorPlus_OneVector_PositiveTestResult(Vector vector, Vector excpectedVector)
+        {
+            Assert.AreEqual(excpectedVector, +vector);
+        }
 
+        private static IEnumerable<object[]> GetVectorsForUnaryOperatorPlusTest()
+        {
+            yield return new object[] { new Vector(5, 1, 4), new Vector(5, 1, 4), };
+            yield return new object[] { new Vector(10, 20, 30), new Vector(10, 20, 30) };
+            yield return new object[] { new Vector(6, 12, 9), new Vector(6, 12, 9) };
+        }
 
+        [DataTestMethod, Description("Testing an overloaded unary operator -. Positive test result.")]
+        [DynamicData(nameof(GetVectorsForUnaryOperatorMinusTest), DynamicDataSourceType.Method)]
+        public void OverloadedUnaryOperatorMinus_OneVector_PositiveTestResult(Vector vector, Vector excpectedVector)
+        {
+            Assert.AreEqual(excpectedVector, -vector);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private static IEnumerable<object[]> GetVectorsForUnaryOperatorMinusTest()
+        {
+            yield return new object[] { new Vector(5, 1, 4), new Vector(-5, -1, -4), };
+            yield return new object[] { new Vector(10, 20, 30), new Vector(-10, -20, -30) };
+            yield return new object[] { new Vector(-6, 12, 9), new Vector(6, -12, -9) };
+        }
 
         [DataTestMethod, Description("Testing an overloaded operator + for two vectors with positive numbers. Positive test result.")]
         [DynamicData(nameof(GetVectorsWithPositiveNumbersForPlusOperator), DynamicDataSourceType.Method)]
