@@ -234,10 +234,10 @@ namespace ThreeDimensionalArray
         public override string ToString() => $"Vertex coordinates ({X}; {Y}; {Z})";
 
         /// <summary>
-        /// 
+        /// Checking the input data for the presence of zero
         /// </summary>
-        /// <param name="numbers"></param>
-        /// <returns></returns>
+        /// <param name="numbers">Input values</param>
+        /// <returns>Boolean</returns>
         private static bool IsZero(params double[] numbers) => numbers.Any(n => n == 0d);
     }
 }
