@@ -49,16 +49,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ThreeDimensionalArrayTests.cs" />
+    <Compile Include="ThreeDimensionalVectorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThreeDimensionalArray\ThreeDimensionalArray.csproj">
+    <ProjectReference Include="..\ThreeDimensionalArray\ThreeDimensionalVector.csproj">
       <Project>{8cf9c306-4d3f-4ce5-be5d-fff4fc09a580}</Project>
-      <Name>ThreeDimensionalArray</Name>
+      <Name>ThreeDimensionalVector</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

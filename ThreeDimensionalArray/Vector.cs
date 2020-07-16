@@ -76,12 +76,7 @@ namespace ThreeDimensionalArray
 
         public static bool operator ==(Vector vectorA, Vector vectorB)
         {
-            if (ReferenceEquals(vectorA, null) || ReferenceEquals(vectorB, null))
-            {
-                return ReferenceEquals(vectorA, null) && ReferenceEquals(vectorB, null);
-            }
-
-            return ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length;
+            return !(vectorA is null) && !(vectorB is null) ? ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length : vectorA is null && vectorB is null;
         }
 
         public static bool operator !=(Vector vectorA, Vector vectorB) => !(vectorA == vectorB);
