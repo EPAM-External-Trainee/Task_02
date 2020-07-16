@@ -56,7 +56,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThreeDimensionalArray\ThreeDimensionalVector.csproj">
+    <ProjectReference Include="..\ThreeDimensionalVector\ThreeDimensionalVector.csproj">
       <Project>{8cf9c306-4d3f-4ce5-be5d-fff4fc09a580}</Project>
       <Name>ThreeDimensionalVector</Name>
     </ProjectReference>
