@@ -5,6 +5,9 @@ using ThreeDimensionalArray;
 
 namespace ThreeDimensionalVectorUnitTests
 {
+    /// <summary>
+    /// Class that tests methods of the Vector class
+    /// </summary>
     [TestClass]
     public class ThreeDimensionalVectorTests
     {

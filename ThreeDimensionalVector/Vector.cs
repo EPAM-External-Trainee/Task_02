@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace ThreeDimensionalArray
 {
+    /// <summary>
+    /// Сlass that describes working with a three-dimensional vector
+    /// </summary>
     public class Vector
     {
         /// <summary>
@@ -76,7 +79,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector object</param>
         /// <param name="vectorB">Second three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of adding vectors</returns>
         public static Vector operator +(Vector vectorA, Vector vectorB) => new Vector(vectorA.X + vectorB.X, vectorA.Y + vectorB.Y, vectorA.Z + vectorB.Z);
 
         /// <summary>
@@ -84,7 +87,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector object</param>
         /// <param name="vectorB">Second three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>The result of the subtraction of vectors</returns>
         public static Vector operator -(Vector vectorA, Vector vectorB) => new Vector(vectorA.X - vectorB.X, vectorA.Y - vectorB.Y, vectorA.Z - vectorB.Z);
 
         /// <summary>
@@ -92,7 +95,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector object</param>
         /// <param name="vectorB">Second three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>The result of the multiplication of vectors</returns>
         public static Vector operator *(Vector vectorA, Vector vectorB) => new Vector((vectorA.Y * vectorB.Z) - (vectorA.Z * vectorB.Y), (vectorA.Z * vectorB.X) - (vectorA.X * vectorB.Z), (vectorA.X * vectorB.Y) - (vectorA.Y * vectorB.X));
 
         /// <summary>
@@ -100,7 +103,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector object</param>
         /// <param name="vectorB">Second three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>The result of dividing the vectors</returns>
         public static Vector operator /(Vector vectorA, Vector vectorB)
         {
             if (IsZero(vectorB.X, vectorB.Y, vectorB.Z))
@@ -116,7 +119,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
         /// <param name="value">Number</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of adding a vector and a number</returns>
         public static Vector operator +(Vector vectorA, double value) => new Vector(vectorA.X + value, vectorA.Y + value, vectorA.Z + value);
 
         /// <summary>
@@ -124,7 +127,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
         /// <param name="value">Number</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of subtraction a vector and a number</returns>
         public static Vector operator -(Vector vectorA, double value) => new Vector(vectorA.X - value, vectorA.Y - value, vectorA.Z - value);
 
         /// <summary>
@@ -132,7 +135,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
         /// <param name="value">Number</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of multiplying a vector and a number</returns>
         public static Vector operator *(Vector vectorA, double value) => new Vector(vectorA.X * value, vectorA.Y * value, vectorA.Z * value);
 
         /// <summary>
@@ -140,7 +143,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
         /// <param name="value">Number</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of dividing a vector and a number</returns>
         public static Vector operator /(Vector vectorA, double value)
         {
             if (IsZero(value))
@@ -156,7 +159,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
         /// <param name="value">Number</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of the remainder from dividing a vector and a number</returns>
         public static Vector operator %(Vector vectorA, double value) => new Vector(vectorA.X % value, vectorA.Y % value, vectorA.Z % value);
 
         /// <summary>
@@ -164,7 +167,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="value">Number</param>
         /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of adding a number and a vector</returns>
         public static Vector operator +(double value, Vector vectorA) => vectorA + value;
 
         /// <summary>
@@ -172,7 +175,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="value">Number</param>
         /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of subtracting a number and vector</returns>
         public static Vector operator -(double value, Vector vectorA) => vectorA - value;
 
         /// <summary>
@@ -180,7 +183,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="value">Number</param>
         /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of multiplying a number and vector</returns>
         public static Vector operator *(double value, Vector vectorA) => vectorA * value;
 
         /// <summary>
@@ -188,7 +191,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="value">Number</param>
         /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of dividing a number and a vector</returns>
         public static Vector operator /(double value, Vector vectorA) => vectorA / value;
 
         /// <summary>
@@ -196,7 +199,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="value">Number</param>
         /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Three-dimensional vector object</returns>
+        /// <returns>Result of the remainder of the number and vector division</returns>
         public static Vector operator %(double value, Vector vectorA) => vectorA % value;
 
         /// <summary>
@@ -204,7 +207,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector</param>
         /// <param name="vectorB">Second three-dimensional vector</param>
-        /// <returns>Boolean</returns>
+        /// <returns>The result of the comparison vectors</returns>
         public static bool operator ==(Vector vectorA, Vector vectorB)
         {
             return !(vectorA is null) && !(vectorB is null) ? ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length : vectorA is null && vectorB is null;
@@ -215,7 +218,7 @@ namespace ThreeDimensionalArray
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector</param>
         /// <param name="vectorB">Second three-dimensional vector</param>
-        /// <returns>Boolean</returns>
+        /// <returns>The result of the comparison vectors</returns>
         public static bool operator !=(Vector vectorA, Vector vectorB) => !(vectorA == vectorB);
 
         public override bool Equals(object obj)
@@ -237,7 +240,7 @@ namespace ThreeDimensionalArray
         /// Checking the input data for the presence of zero
         /// </summary>
         /// <param name="numbers">Input values</param>
-        /// <returns>Boolean</returns>
+        /// <returns>The result of checking for zero</returns>
         private static bool IsZero(params double[] numbers) => numbers.Any(n => n == 0d);
     }
 }
