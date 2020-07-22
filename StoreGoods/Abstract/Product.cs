@@ -1,4 +1,6 @@
-﻿namespace StoreGoods
+﻿using System;
+
+namespace StoreGoods
 {
     /// <summary>
     /// Сlass that describes the store's product
@@ -32,6 +34,18 @@
             Name = name;
             Price = price;
         }
+
+        /// <summary>
+        /// Overloaded implicit operator decimal for casting product to Decimal
+        /// </summary>
+        /// <param name="product"></param>
+        public static implicit operator decimal(Product product) => (decimal)(product?.Price);
+
+        /// <summary>
+        /// Overloaded implicit operator for casting product to Int32
+        /// </summary>
+        /// <param name="product"></param>
+        public static implicit operator int(Product product) => Convert.ToInt32(product?.Price / 100);
 
         public override string ToString() => $"Product name: {Name}, type: {Type}, price: {Price}$";
     }

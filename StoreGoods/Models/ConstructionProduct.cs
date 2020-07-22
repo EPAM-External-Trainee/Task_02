@@ -35,20 +35,15 @@ namespace StoreGoods
         /// <param name="product">Construction product</param>
         public static implicit operator ElectricalProduct(ConstructionProduct product) => new ElectricalProduct(product.Name, product.Type, product.Price);
 
-        /// <summary>
-        /// Overloaded implicit operator for casting a construction product to Decimal
-        /// </summary>
-        /// <param name="product"></param>
-        public static implicit operator decimal(ConstructionProduct product) => product.Price;
-
-        /// <summary>
-        /// Overloaded implicit operator for casting a construction product to Int32
-        /// </summary>
-        /// <param name="product"></param>
-        public static implicit operator int(ConstructionProduct product) => Convert.ToInt32(product.Price * 100);
-
         public override bool Equals(object obj) => obj is ConstructionProduct product && Name == product.Name && Type == product.Type && Price == product.Price;
 
-        public override int GetHashCode() => Name.GetHashCode() + Type.GetHashCode() + Price.GetHashCode();
+        public override int GetHashCode()
+        {
+            int hashCode = 1368981669;
+            hashCode = (hashCode * -1521134295) + Name.GetHashCode();
+            hashCode = (hashCode * -1521134295) + Type.GetHashCode();
+            hashCode = (hashCode * -1521134295) + Price.GetHashCode();
+            return hashCode;
+        }
     }
 }

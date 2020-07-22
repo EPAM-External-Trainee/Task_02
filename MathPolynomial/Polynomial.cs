@@ -241,6 +241,12 @@ namespace MathPolynomial
 
         public override bool Equals(object obj) => obj is Polynomial polynomial && Degree == polynomial.Degree && Enumerable.SequenceEqual(Coeffs, polynomial.Coeffs);
 
-        public override int GetHashCode() => Degree.GetHashCode() + Coeffs.GetHashCode();
+        public override int GetHashCode()
+        {
+            int hashCode = 119044004;
+            hashCode = (hashCode * -1521134295) + Degree.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<double[]>.Default.GetHashCode(Coeffs);
+            return hashCode;
+        }
     }
 }
