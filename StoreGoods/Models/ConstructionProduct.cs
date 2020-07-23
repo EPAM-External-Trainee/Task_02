@@ -5,7 +5,7 @@ namespace StoreGoods
     /// <summary>
     /// Class that describes the store's construction products
     /// </summary>
-    class ConstructionProduct : Product
+    public class ConstructionProduct : Product
     {
         /// <summary>
         /// Constructor for creating an instance of the class
@@ -21,16 +21,16 @@ namespace StoreGoods
         /// <param name="product1">First construction product</param>
         /// <param name="product2">Second construction product</param>
         /// <returns>The result of adding the two construction products</returns>
-        public static ConstructionProduct operator +(ConstructionProduct product1, ConstructionProduct product2) => new ConstructionProduct($"{product1.Name}-{product2.Name}", product1.Name, Math.Round((product1.Price + product2.Price) / 2, 2));
+        public static ConstructionProduct operator +(ConstructionProduct product1, ConstructionProduct product2) => new ConstructionProduct($"{product1.Name}-{product2.Name}", product1.Type, Math.Round((product1.Price + product2.Price) / 2, 2));
 
         /// <summary>
-        /// Overloaded implicit operator for casting a construction product to a food product
+        /// Overloaded implicit operator for castinga  construction product to a food product
         /// </summary>
         /// <param name="product">Construction product</param>
         public static implicit operator FoodProduct(ConstructionProduct product) => new FoodProduct(product.Name, product.Type, product.Price);
 
         /// <summary>
-        /// Overloaded implicit operator for casting a construction product to a electrical product
+        /// Overloaded implicit operator for casting an electrical product to a construction product
         /// </summary>
         /// <param name="product">Construction product</param>
         public static implicit operator ElectricalProduct(ConstructionProduct product) => new ElectricalProduct(product.Name, product.Type, product.Price);

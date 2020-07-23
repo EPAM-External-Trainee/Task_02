@@ -132,9 +132,9 @@ namespace PolynomialUnitTests
         /// <returns>Object array</returns>   
         private static IEnumerable<object[]> GetPolynomialsWithSameDegreeForTestingOperatorDivision()
         {
-            yield return new object[] { new Polynomial(8, 12, 99, 150), new Polynomial(40, 7, 3), new Polynomial(96.54, 149.21) };
-            yield return new object[] { new Polynomial(9, 5), new Polynomial(3, 2), new Polynomial(-1) };
-            yield return new object[] { new Polynomial(-1, 4, 0.5), new Polynomial(4, 5, 7), new Polynomial(5.25, 2.25) };
+            yield return new object[] { new Polynomial(8, 12, 99, 150), new Polynomial(40, 7, 3, 25), new Polynomial(0.2) };
+            yield return new object[] { new Polynomial(9, 5), new Polynomial(9, 5), new Polynomial(1) };
+            yield return new object[] { new Polynomial(-1, 4, 0.5), new Polynomial(4, 5, 7), new Polynomial(-0.25) };
         }
 
         [DataTestMethod, Description("Testing the overloaded division operator between two polynomials with the different degrees. Positive test result.")]
@@ -150,9 +150,9 @@ namespace PolynomialUnitTests
         /// <returns>Object array</returns>   
         private static IEnumerable<object[]> GetPolynomialsWithDifferentDegreeForTestingOperatorDivision()
         {
-            yield return new object[] { new Polynomial(7, 2), new Polynomial(5, 5, 2), new Polynomial(7, 2) };
-            yield return new object[] { new Polynomial(9, 5, 6), new Polynomial(3, 2, 4, 12), new Polynomial(9, 5, 6) };
-            yield return new object[] { new Polynomial(9, 5, 6, 0.3, -12), new Polynomial(3, 2, 4, 12), new Polynomial(-5.33, -34.37, -8) };
+            yield return new object[] { new Polynomial(7, 2), new Polynomial(5, 5, 2), new Polynomial(0) };
+            yield return new object[] { new Polynomial(9, 5, 6), new Polynomial(3, 2, 4, 12), new Polynomial(0) };
+            yield return new object[] { new Polynomial(9, 5, 6, 0.3, -12), new Polynomial(3, 2, 4, 12), new Polynomial(3, -0.33) };
         }
 
         [DataTestMethod, Description("Testing the overloaded multiplication operator between polynomial and number. Positive test result.")]

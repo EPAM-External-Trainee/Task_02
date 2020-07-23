@@ -5,7 +5,7 @@ namespace StoreGoods
     /// <summary>
     /// Class that describes the store's electrical products
     /// </summary>
-    class ElectricalProduct : Product
+    public class ElectricalProduct : Product
     {
         /// <summary>
         /// Constructor for creating an instance of the class

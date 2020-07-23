@@ -5,7 +5,7 @@ namespace StoreGoods
     /// <summary>
     /// Class that describes the store's food products
     /// </summary>
-    class FoodProduct : Product
+    public class FoodProduct : Product
     {
         /// <summary>
         /// Constructor for creating an instance of the class

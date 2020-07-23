@@ -126,31 +126,34 @@ namespace MathPolynomial
         /// <returns>Division of polynomials</returns>
         public static Polynomial operator /(Polynomial p1, Polynomial p2)
         {
+            if(p1 == p2)
+            {
+                return new Polynomial(1);
+            }
+
             int currentDegree = p1.Coeffs.Length + 1;
-            List<double> coefficients = new List<double>();
-            List<double> result = p1.Coeffs.ToList();
+            List<double> solution = new List<double>();
+            List<double> remainder = p1.Coeffs.ToList();
 
             for (int i = 0; i <= p1.Coeffs.Length - p2.Coeffs.Length; i++)
             {
                 if (currentDegree < 0)
                 {
-                    coefficients.Add(result[i] / p2.Coeffs[0]);
+                    solution.Add(remainder[i] / p2.Coeffs[0]);
                 }
                 else
                 {
-                    coefficients.Add(result[i] / p2.Coeffs[0]);
+                    solution.Add(remainder[i] / p2.Coeffs[0]);
                     for (int j = 0; j < p2.Coeffs.Length; j++)
                     {
-                        result[i + j] = result[i + j] - (coefficients[i] * p2.Coeffs[j]);
+                        remainder[i + j] = remainder[i + j] - (solution[i] * p2.Coeffs[j]);
                     }
                     currentDegree--;
                 }
             }
 
-            result.RemoveAll(r => r == 0d);
-            result = result.Select(r => Math.Round(r, 2)).ToList();
-            result.RemoveAll(r => r == 0d);
-            return new Polynomial(result.ToArray());
+            solution = solution.Select(r => Math.Round(r, 2)).ToList();
+            return solution.Count == 0 ? new Polynomial(0) : new Polynomial(solution.ToArray());
         }
 
         /// <summary>
@@ -245,7 +248,7 @@ namespace MathPolynomial
         {
             int hashCode = 119044004;
             hashCode = (hashCode * -1521134295) + Degree.GetHashCode();
-            hashCode = (hashCode * -1521134295) + EqualityComparer<double[]>.Default.GetHashCode(Coeffs);
+            hashCode = (hashCode * -1521134295) + Coeffs.GetHashCode();
             return hashCode;
         }
     }
