@@ -42,8 +42,8 @@ namespace StoreGoodsUnitTests
         private static IEnumerable<object[]> GetProductObjectsForTestingCastOperatorFoodProduct()
         {
             yield return new object[] { new FoodProduct("Potato", "Food product", 0.5m), new ConstructionProduct("Potato", "Food product", 0.5m) };
-            yield return new object[] { new FoodProduct("Meat", "Food product", 21m), new ConstructionProduct("Meat", "Food product", 0.2m) };
-            yield return new object[] { new FoodProduct("Milk", "Food product", 1m), new ConstructionProduct("Milk", "Food product", 1.6m) };
+            yield return new object[] { new FoodProduct("Meat", "Food product", 21m), new ConstructionProduct("Meat", "Food product", 21m) };
+            yield return new object[] { new FoodProduct("Milk", "Food product", 1m), new ConstructionProduct("Milk", "Food product", 1m) };
         }
 
         [DataTestMethod, Description("Testing the overloaded implicit operator ElectricalProduct casting ConstructionProduct to an ElectricalProduct")]
