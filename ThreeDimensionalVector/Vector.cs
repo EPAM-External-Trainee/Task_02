@@ -23,11 +23,6 @@ namespace ThreeDimensionalArray
         public double Z { get; private set; } = 0;
 
         /// <summary>
-        /// Default constructor
-        /// </summary>
-        public Vector() { }
-
-        /// <summary>
         /// A parameterized constructor that accepts the coordinates of the vertices
         /// </summary>
         /// <param name="x">X coordinate</param>
@@ -175,10 +170,7 @@ namespace ThreeDimensionalArray
         /// <param name="vectorA">First three-dimensional vector</param>
         /// <param name="vectorB">Second three-dimensional vector</param>
         /// <returns>The result of the comparison vectors</returns>
-        public static bool operator ==(Vector vectorA, Vector vectorB)
-        {
-            return !(vectorA is null) && !(vectorB is null) ? ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length : vectorA is null && vectorB is null;
-        }
+        public static bool operator ==(Vector vectorA, Vector vectorB) => !(vectorA is null || vectorB is null) ? ReferenceEquals(vectorA, vectorB) || vectorA.Length == vectorB.Length : vectorA is null && vectorB is null;
 
         /// <summary>
         /// Overloaded binary operator "!=" for three-dimensional vectors
