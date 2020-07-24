@@ -24,13 +24,13 @@ namespace StoreGoods
         public static FoodProduct operator +(FoodProduct product1, FoodProduct product2) => new FoodProduct($"{product1.Name}-{product2.Name}", product1.Type, Math.Round((product1.Price + product2.Price) / 2, 2));
 
         /// <summary>
-        /// Overloaded implicit operator for casting a food product to an electrical product
+        /// Overloaded implicit operator for casting a food to an electrical product
         /// </summary>
         /// <param name="product">Food product</param>
         public static implicit operator ElectricalProduct(FoodProduct product) => new ElectricalProduct(product.Name, product.Type, product.Price);
 
         /// <summary>
-        /// Overloaded implicit operator for casting a food product to a construction product
+        /// Overloaded implicit operator for casting a food to a construction product
         /// </summary>
         /// <param name="product">Food product</param>
         public static implicit operator ConstructionProduct(FoodProduct product) => new ConstructionProduct(product.Name, product.Type, product.Price);
