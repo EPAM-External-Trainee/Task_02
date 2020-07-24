@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace ThreeDimensionalArray
 {
@@ -99,22 +98,6 @@ namespace ThreeDimensionalArray
         public static Vector operator *(Vector vectorA, Vector vectorB) => new Vector((vectorA.Y * vectorB.Z) - (vectorA.Z * vectorB.Y), (vectorA.Z * vectorB.X) - (vectorA.X * vectorB.Z), (vectorA.X * vectorB.Y) - (vectorA.Y * vectorB.X));
 
         /// <summary>
-        /// Overloaded binary operator "/" for three-dimensional vectors
-        /// </summary>
-        /// <param name="vectorA">First three-dimensional vector object</param>
-        /// <param name="vectorB">Second three-dimensional vector object</param>
-        /// <returns>The result of dividing the vectors</returns>
-        public static Vector operator /(Vector vectorA, Vector vectorB)
-        {
-            if (IsZero(vectorB.X, vectorB.Y, vectorB.Z))
-            {
-                throw new DivideByZeroException("Can't divide by zero");
-            }
-
-            return new Vector(Math.Round(vectorA.X / vectorB.X, 2), Math.Round(vectorA.Y / vectorB.Y, 2), Math.Round(vectorA.Z / vectorB.Z, 2));
-        }
-
-        /// <summary>
         /// Overloaded binary operator "+" for three-dimensional vector and number
         /// </summary>
         /// <param name="vectorA">Three-dimensional vector object</param>
@@ -146,21 +129,13 @@ namespace ThreeDimensionalArray
         /// <returns>Result of dividing a vector and a number</returns>
         public static Vector operator /(Vector vectorA, double value)
         {
-            if (IsZero(value))
+            if (value == 0d)
             {
                 throw new DivideByZeroException("Can't divide by zero");
             }
 
             return new Vector(Math.Round(vectorA.X / value, 2), Math.Round(vectorA.Y / value, 2), Math.Round(vectorA.Z / value, 2));
         }
-
-        /// <summary>
-        /// Overloaded binary operator "%" for three-dimensional vector and number
-        /// </summary>
-        /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <param name="value">Number</param>
-        /// <returns>Result of the remainder from dividing a vector and a number</returns>
-        public static Vector operator %(Vector vectorA, double value) => new Vector(vectorA.X % value, vectorA.Y % value, vectorA.Z % value);
 
         /// <summary>
         /// Overloaded binary operator "+" for number and three-dimensional vector
@@ -195,14 +170,6 @@ namespace ThreeDimensionalArray
         public static Vector operator /(double value, Vector vectorA) => vectorA / value;
 
         /// <summary>
-        /// Overloaded binary operator "%" for number and three-dimensional vector
-        /// </summary>
-        /// <param name="value">Number</param>
-        /// <param name="vectorA">Three-dimensional vector object</param>
-        /// <returns>Result of the remainder of the number and vector division</returns>
-        public static Vector operator %(double value, Vector vectorA) => vectorA % value;
-
-        /// <summary>
         /// Overloaded binary operator "==" for three-dimensional vectors
         /// </summary>
         /// <param name="vectorA">First three-dimensional vector</param>
@@ -223,7 +190,7 @@ namespace ThreeDimensionalArray
 
         public override bool Equals(object obj)
         {
-            if((obj as Vector) == null || !(obj is Vector))
+            if ((obj as Vector) == null || !(obj is Vector))
             {
                 return false;
             }
@@ -243,12 +210,5 @@ namespace ThreeDimensionalArray
         }
 
         public override string ToString() => $"Vertex coordinates ({X}; {Y}; {Z})";
-
-        /// <summary>
-        /// Checking the input data for the presence of zero
-        /// </summary>
-        /// <param name="numbers">Input values</param>
-        /// <returns>The result of checking for zero</returns>
-        private static bool IsZero(params double[] numbers) => numbers.Any(n => n == 0d);
     }
 }

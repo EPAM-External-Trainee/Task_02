@@ -39,7 +39,7 @@ namespace StoreGoods
         /// Overloaded implicit operator decimal for casting product to Decimal
         /// </summary>
         /// <param name="product">Product object</param>
-        public static implicit operator decimal(Product product) => (decimal)(product?.Price);
+        public static implicit operator decimal(Product product) => Convert.ToDecimal(product?.Price);
 
         /// <summary>
         /// Overloaded implicit operator for casting product to Int32

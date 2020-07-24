@@ -192,24 +192,6 @@ namespace ThreeDimensionalVectorUnitTests
             yield return new object[] { new Vector(6, -12, 9), 100, new Vector(0.06, -0.12, 0.09) };
         }
 
-        [DataTestMethod, Description("Testing an overloaded operator % between Vector and number. Positive test result.")]
-        [DynamicData(nameof(GetVectorsAndNumbersForOperatorDivisionRemainderTest), DynamicDataSourceType.Method)]
-        public void OverloadedOperatorDivisionRemainder_VectorAndNumber_PositiveTestResult(Vector vector, double value, Vector excpectedVector)
-        {
-            Assert.AreEqual(excpectedVector, vector % value);
-        }
-
-        /// <summary>
-        /// Creating multiple objects of the Vector class for testing an overloaded operator % between vector and number
-        /// </summary>
-        /// <returns>Object array</returns>
-        private static IEnumerable<object[]> GetVectorsAndNumbersForOperatorDivisionRemainderTest() 
-        {
-            yield return new object[] { new Vector(5, 3, 11), 7, new Vector(5, 3, 4), };
-            yield return new object[] { new Vector(7, 1, 2), 2, new Vector(1, 1, 0) };
-            yield return new object[] { new Vector(12, 19, 21), 3, new Vector(0, 1, 0) };
-        }
-
         [DataTestMethod, Description("Testing an overloaded operator == between two vectors. Positive test result.")]
         [DynamicData(nameof(GetVectorsAndNumbersForOperatorEqualsTest), DynamicDataSourceType.Method)]
         public void OverloadedOperatorEqual_TwoVectors_PositiveTestResult(Vector vector1, Vector vector2)
@@ -352,42 +334,6 @@ namespace ThreeDimensionalVectorUnitTests
             yield return new object[] { new Vector(-10, 20, 30), new Vector(-1, -2, 3), new Vector(120, 0, 40) };
             yield return new object[] { new Vector(10, -20, 30), new Vector(4, -5, -6), new Vector(270, 180, 30) };
             yield return new object[] { new Vector(-10, -20, -30), new Vector(-7, -8, 9), new Vector(-420, 300, -60) };
-        }
-
-        [DataTestMethod, Description("Testing an overloaded operator / for two vectors. Throw DivideByZeroException.")]
-        [DynamicData(nameof(GetVectorsWithPosAndNegNumbersWithZerosForDivisionOperator), DynamicDataSourceType.Method)]
-        public void OverloadOperatorDivision_TwoVectors_ThrowDivideByZeroException(Vector vector, Vector actualVector )
-        {
-            Assert.ThrowsException<DivideByZeroException>(() => vector / actualVector);
-        }
-
-        /// <summary>
-        /// Creating multiple objects of the Vector class with positive and negative numbers
-        /// </summary>
-        /// <returns>Object array</returns>
-        private static IEnumerable<object[]> GetVectorsWithPosAndNegNumbersWithZerosForDivisionOperator()
-        {
-            yield return new object[] { new Vector(-10, 20, 30), new Vector(-1, 0, 3) };
-            yield return new object[] { new Vector(10, -20, 30), new Vector(4, -5, 0) };
-            yield return new object[] { new Vector(-10, -20, -30), new Vector(0, -8, 9) };
-        }
-
-        [DataTestMethod, Description("Testing an overloaded operator / for two vectors. Positive test result.")]
-        [DynamicData(nameof(GetVectorsWithPosAndNegNumbersForDivisionOperator), DynamicDataSourceType.Method)]
-        public void OverloadOperatorDivision_TwoVectors_PositiveTestResult(Vector vector, Vector actualVector, Vector excpectedVector)
-        {
-            Assert.AreEqual(excpectedVector, vector / actualVector);
-        }
-
-        /// <summary>
-        /// Creating multiple objects of the Vector class with positive and negative numbers
-        /// </summary>
-        /// <returns>Object array</returns>
-        private static IEnumerable<object[]> GetVectorsWithPosAndNegNumbersForDivisionOperator()
-        {
-            yield return new object[] { new Vector(-10, 20, 30), new Vector(-1, -2, 3), new Vector(10, -10, 10) };
-            yield return new object[] { new Vector(10, -20, 30), new Vector(4, -5, -6), new Vector(2.5, 4, -5) };
-            yield return new object[] { new Vector(-10, -20, -30), new Vector(-7, -8, 9), new Vector(1.43, 2.5, -3.33) };
         }
     }
 }
