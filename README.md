@@ -1,4 +1,4 @@
-# EPAM_External_Trainee_Task_02_Konstantin_Kapatkov
+# .NET Summer 2020 (external)
 ## Task02. Operations_оverload
 ### Task 1
 * Develop a "vector" class for working with three-dimensional vectors.
